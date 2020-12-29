@@ -4,7 +4,7 @@
 let d = new Date();
 let newDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
 // Personal API Key for OpenWeatherMap API
-let apiKey = 'ab2a39b9b63f8e0675d89a726e4aff99';
+let apiKey = 'ab2a39b9b63f8e0675d89a726e4aff99&units=imperial';
 let baseURL = `http://api.openweathermap.org/data/2.5/weather?zip=`
 let zipCode =  document.querySelector('#zip');
 
@@ -20,11 +20,10 @@ function performAction(e){
             date: newDate,
             temp: data.main.temp,
             userResponse: feelings,
-        })
+        }).then(
+            updateUI()
+        )
     })
-    .then(
-        updateUI()
-    )
 }
 
 /* Function to GET Web API Data*/
@@ -77,9 +76,9 @@ const updateUI = async () => {
     const request = await fetch('/all');
     try{
       const data = await request.json();
-      document.querySelector('#temp').innerHTML = `Temperature: ${data[data.length - 1].temp}`;
-      document.querySelector('#date').innerHTML = `Date: ${data[data.length - 1].date}`;
-      document.querySelector('#content').innerHTML = `Response: ${data[data.length - 1].userResponse}`;
+      document.querySelector('#temp').innerHTML = `Temperature: ${data.newEntry.temp}`;
+      document.querySelector('#date').innerHTML = `Date: ${data.newEntry.date}`;
+      document.querySelector('#content').innerHTML = `Response: ${data.newEntry.userResponse}`;
 
     }catch(error){
       console.log("error", error);
