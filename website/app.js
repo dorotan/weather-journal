@@ -21,7 +21,7 @@ function performAction(e){
             temp: data.main.temp,
             userResponse: feelings,
         }).then(
-            updateUI()
+               updateUI()
         )
     })
 }
