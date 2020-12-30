@@ -4,7 +4,7 @@
 let d = new Date();
 let newDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
 // Personal API Key for OpenWeatherMap API
-let apiKey = 'ab2a39b9b63f8e0675d89a726e4aff99&units=imperial';
+const apiKey = 'ab2a39b9b63f8e0675d89a726e4aff99&units=imperial';
 let baseURL = `http://api.openweathermap.org/data/2.5/weather?zip=`
 let zipCode =  document.querySelector('#zip');
 
